@@ -12,6 +12,11 @@ function renderPosts() {
   document.getElementById("blog-list").innerHTML = html;
 }
 
+function clearInputForm() {
+  document.getElementById("post-title").value = "";
+  document.getElementById("post-body").value = "";
+}
+
 fetch("https://apis.scrimba.com/jsonplaceholder/posts")
   .then((res) => res.json())
   .then((data) => {
@@ -41,5 +46,6 @@ document.getElementById("new-post").addEventListener("submit", (e) => {
     .then((data) => {
       postsArray.unshift(data);
       renderPosts();
+      clearInputForm();
     });
 });
